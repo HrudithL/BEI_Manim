@@ -1,0 +1,24 @@
+# Manim render cache
+media/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Claude Code internal directory
+.claude/
+
+# Task specification PDF (not part of submission)
+*.pdf
+
+# Duplicate video at repo root (canonical copy is in videos/)
+ols_regression.mp4
