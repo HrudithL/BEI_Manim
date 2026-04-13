@@ -21,4 +21,4 @@ env/
 *.pdf
 
 # Duplicate video at repo root (canonical copy is in videos/)
-ols_regression.mp4
+/ols_regression.mp4
