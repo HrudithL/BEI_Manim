@@ -22,11 +22,8 @@ Manim_BEI/
 │  ├─ confidence_intervals/
 │  │  └─ ci_scene.py
 │  └─ central_limit_theorem/
-│     ├─ clt_scene.py
-│     └─ media/                      # local render artifacts for this scene
-├─ media/                            # Manim default render/cache output (root-level)
+│     └─ clt_scene.py
 ├─ videos/                           # curated final mp4 exports
-├─ concept_visualization_in_manim.pdf
 └─ README.md
 ```
 
@@ -79,8 +76,7 @@ manim -pqh code/central_limit_theorem/clt_scene.py CLTVisualization
 
 ## Output Locations
 
-Manim writes renders under a `media/videos/<scene_file>/...` path (typically at the repo root unless overridden by working directory or config).  
-This repo also keeps curated exports in `videos/`:
+This repo keeps curated exports in `videos/`:
 
 - `videos/ols_regression.mp4`
 - `videos/confidence_intervals.mp4`
@@ -89,4 +85,3 @@ This repo also keeps curated exports in `videos/`:
 ## Notes
 
 - Scene scripts use fixed random seeds for reproducible animations.
-- `__pycache__` and `media/` subfolders are generated artifacts and can be recreated by rendering again.
