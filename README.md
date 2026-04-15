@@ -1,58 +1,92 @@
 # Concept Visualization in Manim
 
-## Animation 1 — Ordinary Least Squares
+Short educational animations built with Manim Community Edition to explain core statistics concepts visually.
 
-**Concept:** Ordinary Least Squares (OLS) regression
-**Seeing Theory reference:** [Regression Analysis — Seeing Theory (Brown University)](https://seeing-theory.brown.edu/regression-analysis/index.html)
+## Project Scope
 
-### Storyline
+This project currently includes three standalone scenes:
 
+- `OLSVisualization` (`code/ols_regression/ols_scene.py`)
+- `ConfidenceIntervals` (`code/confidence_intervals/ci_scene.py`)
+- `CLTVisualization` (`code/central_limit_theorem/clt_scene.py`)
+
+All visuals are generated in code (no external image/video assets required).
+
+## Repository Structure
+
+```text
+Manim_BEI/
+├─ code/
+│  ├─ ols_regression/
+│  │  └─ ols_scene.py
+│  ├─ confidence_intervals/
+│  │  └─ ci_scene.py
+│  └─ central_limit_theorem/
+│     ├─ clt_scene.py
+│     └─ media/                      # local render artifacts for this scene
+├─ media/                            # Manim default render/cache output (root-level)
+├─ videos/                           # curated final mp4 exports
+├─ concept_visualization_in_manim.pdf
+└─ README.md
 ```
-Data Cloud → Candidate Line → Residuals → SSE (geometric squares)
-           → Slope Sweep (live SSE) → Optimal OLS Line + Formulas
-```
 
-The animation walks through:
-1. Scatter plot of observed data points
-2. A candidate (non-optimal) regression line
-3. Residuals drawn as vertical segments — eᵢ = yᵢ − ŷᵢ
-4. SSE visualized geometrically: each squared residual = area of a square
-5. Slope sweep rotating the line around the centroid (x̄, ȳ) while SSE updates live
-6. Convergence to the OLS optimal line with closed-form estimators
+## Setup
 
-### Requirements met
-
-| Requirement | How |
-|---|---|
-| > 45 seconds | ~75 seconds total |
-| One connected storyline | Data → Line → Residuals → SSE → Optimal |
-| Mathematical equations | SSE formula, β₁ and β₀ estimators, argmin expression |
-| Visual representation | Scatter plot, regression line, residual segments, geometric squares |
-| Animated change over time | Slope sweep with live SSE update |
-| Understandable without narration | On-screen captions at each step |
-
-### How to run
-
-Install Manim Community Edition if needed:
+Install Manim CE in your environment:
 
 ```bash
 pip install manim
 ```
 
-Render (medium quality, auto-preview):
+If rendering fails due to system dependencies, install the Manim prerequisites for your OS (FFmpeg and LaTeX packages as needed by your scene content).
+
+## Rendering Commands
+
+Use medium quality while iterating (`-pqm`) and high quality for final output (`-pqh`).
+
+### Ordinary Least Squares
+
+- **Scene class:** `OLSVisualization`
+- **Source:** `code/ols_regression/ols_scene.py`
+- **Reference:** [Seeing Theory - Regression Analysis](https://seeing-theory.brown.edu/regression-analysis/index.html)
 
 ```bash
 manim -pqm code/ols_regression/ols_scene.py OLSVisualization
-```
-
-For the final high-quality render:
-
-```bash
 manim -pqh code/ols_regression/ols_scene.py OLSVisualization
 ```
 
-The rendered file will appear in `media/videos/ols_scene/`. Copy it to `videos/ols_regression.mp4`.
+### Confidence Intervals
 
-### External assets
+- **Scene class:** `ConfidenceIntervals`
+- **Source:** `code/confidence_intervals/ci_scene.py`
+- **Reference:** [Seeing Theory - Confidence Intervals](https://seeing-theory.brown.edu/frequentist-inference/index.html#section2)
 
-None — all visuals are generated programmatically with Manim CE.
+```bash
+manim -pqm code/confidence_intervals/ci_scene.py ConfidenceIntervals
+manim -pqh code/confidence_intervals/ci_scene.py ConfidenceIntervals
+```
+
+### Central Limit Theorem
+
+- **Scene class:** `CLTVisualization`
+- **Source:** `code/central_limit_theorem/clt_scene.py`
+- **Reference:** [Seeing Theory - Probability Distributions (CLT)](https://seeing-theory.brown.edu/probability-distributions/index.html#section3)
+
+```bash
+manim -pqm code/central_limit_theorem/clt_scene.py CLTVisualization
+manim -pqh code/central_limit_theorem/clt_scene.py CLTVisualization
+```
+
+## Output Locations
+
+Manim writes renders under a `media/videos/<scene_file>/...` path (typically at the repo root unless overridden by working directory or config).  
+This repo also keeps curated exports in `videos/`:
+
+- `videos/ols_regression.mp4`
+- `videos/confidence_intervals.mp4`
+- `videos/CLTVisualization.mp4`
+
+## Notes
+
+- Scene scripts use fixed random seeds for reproducible animations.
+- `__pycache__` and `media/` subfolders are generated artifacts and can be recreated by rendering again.

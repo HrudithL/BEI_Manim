@@ -20,5 +20,3 @@ env/
 # Task specification PDF (not part of submission)
 *.pdf
 
-# Duplicate video at repo root (canonical copy is in videos/)
-/ols_regression.mp4
